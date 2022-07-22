@@ -5,10 +5,10 @@ import UserList from '../components/UserList'
 
 const HomePage = () => {
   return (
-    <Fragment>
+    <div className="max-w-6xl mx-auto px-3 mb-3 flex flex-col items-center">
       <UserSearch />
       <UserList />
-    </Fragment>
+    </div>
   )
 }
 

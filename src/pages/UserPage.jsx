@@ -17,7 +17,7 @@ const UserPage = () => {
   }
 
   return (
-    <div>
+    <div className="max-w-6xl mx-auto px-3 mb-3">
       <h1>UserPage</h1>
       <pre>{JSON.stringify(user, null, 2)}</pre>
     </div>

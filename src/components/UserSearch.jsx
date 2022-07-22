@@ -14,28 +14,27 @@ const UserSearch = () => {
 
   return (
     <Fragment>
-      <form className="mb-3" onSubmit={handleSubmit}>
-        <div className="row">
-          <div className="col-10">
-            <input
-              className="form-control"
-              type="text"
-              placeholder="Search"
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-              required
-            />
-          </div>
-          <div className="col-2">
-            <div className="d-grid">
-              <input className="btn btn-primary" type="submit" value="Search" />
-            </div>
-          </div>
-        </div>
+      <form className="mb-3 flex space-x-3" onSubmit={handleSubmit}>
+        <input
+          className="w-60 px-5 py-2 rounded-md"
+          type="text"
+          placeholder="Search Users"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          required
+        />
+        <input
+          className="px-5 py-2 bg-blue-400 rounded-md font-bold cursor-pointer"
+          type="submit"
+          value="Search"
+        />
       </form>
       {users.length > 0 && (
         <div className="mb-3">
-          <button className="btn" onClick={clearUsers}>
+          <button
+            className="px-5 py-2 bg-slate-200 rounded-md font-bold cursor-pointer"
+            onClick={clearUsers}
+          >
             Clear
           </button>
         </div>

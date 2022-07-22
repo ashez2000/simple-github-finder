@@ -2,21 +2,14 @@ import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   return (
-    <header className="mb-3">
-      <nav className="navbar navbar-expand-lg bg-light">
-        <div className="container">
-          <Link className="navbar-brand" to="/">
-            Github Finder
-          </Link>
-
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <Link className="nav-link" to="/about">
-                About
-              </Link>
-            </li>
-          </ul>
-        </div>
+    <header className="max-w-6xl mx-auto px-3 mb-3">
+      <nav className="h-14 flex justify-between items-center">
+        <Link className="font-bold text-xl" to="/">
+          Github Finder
+        </Link>
+        <Link className="text-xl" to="/about">
+          About
+        </Link>
       </nav>
     </header>
   )

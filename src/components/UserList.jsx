@@ -10,11 +10,13 @@ const UserList = () => {
   }
 
   return (
-    <section>
-      {users.map((user) => (
-        <UserItem key={user.id} user={user} />
-      ))}
-    </section>
+    <div className="flex justify-center">
+      <section className="grid grid-cols-4 gap-3">
+        {users.map((user) => (
+          <UserItem key={user.id} user={user} />
+        ))}
+      </section>
+    </div>
   )
 }
 

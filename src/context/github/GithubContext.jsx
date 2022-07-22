@@ -49,6 +49,7 @@ export const GithubProvider = ({ children }) => {
   const value = {
     users: state.users,
     user: state.user,
+    repos: state.repos,
     loading: state.loading,
     searchUsers,
     fetchUserAndRepos,

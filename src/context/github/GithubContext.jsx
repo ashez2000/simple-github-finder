@@ -9,6 +9,7 @@ const initialState = {
   user: {},
   searchUsers: () => {},
   clearUsers: () => {},
+  getUserAndRepos: () => {},
 }
 
 const GithubContext = createContext(initialState)
@@ -24,10 +25,15 @@ export const GithubProvider = ({ children }) => {
     dispatch({ type: 'SEARCH_USERS', payload: data.items })
   }
 
-  const getUser = async (login) => {
+  const getUserAndRepos = async (login) => {
     dispatch({ type: 'GET_USER_REQUEST' })
-    const data = await githubApi(`/users/${login}`)
-    dispatch({ type: 'GET_USER', payload: data })
+
+    const [userData, repos] = await Promise.all([
+      githubApi(`/users/${login}`),
+      githubApi(`/users/${login}/repos`),
+    ])
+
+    dispatch({ type: 'GET_USER', payload: { userData, repos } })
   }
 
   const clearUsers = () => dispatch({ type: 'CLEAR_USERS' })
@@ -37,7 +43,7 @@ export const GithubProvider = ({ children }) => {
     user: state.user,
     loading: state.loading,
     searchUsers,
-    getUser,
+    getUserAndRepos,
     clearUsers,
   }
 

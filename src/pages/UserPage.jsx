@@ -5,11 +5,11 @@ import { useGithub } from '../context/github/GithubContext'
 import Spinner from '../components/Spinner'
 
 const UserPage = () => {
-  const { getUser, user, loading } = useGithub()
+  const { getUserAndRepos, user, loading } = useGithub()
   const { login } = useParams()
 
   useEffect(() => {
-    getUser(login)
+    getUserAndRepos(login)
   }, [])
 
   if (loading) {

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 const UserItem = ({ user }) => {
   return (
-    <div className="flex p-5 max-w-xs border-2 border-indigo-200 rounded-md">
+    <div className="flex p-5 max-w-xs bg-gray-200 border-2 border-blue-200 rounded-md">
       <img
         className="w-20 h-20 rounded-full mr-3"
         src={user.avatar_url}

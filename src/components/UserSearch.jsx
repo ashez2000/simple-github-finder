@@ -16,7 +16,7 @@ const UserSearch = () => {
     <Fragment>
       <form className="mb-3 flex space-x-3" onSubmit={handleSubmit}>
         <input
-          className="w-60 px-5 py-2 rounded-md"
+          className="w-60 px-5 py-2 rounded-md bg-slate-200 focus:outline-none"
           type="text"
           placeholder="Search Users"
           value={text}

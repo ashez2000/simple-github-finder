@@ -2,14 +2,22 @@ import { createContext, useContext, useReducer } from 'react'
 
 import githubApi from '../../utils/api'
 import githubReducer from './githubReducer'
+import {
+  FETCH_SEARCH_USERS,
+  SET_SEARCH_USERS,
+  CLEAR_SEARCH_USERS,
+  FETCH_USER_REPOS,
+  SET_USER_REPOS,
+} from './githubTypes'
 
 const initialState = {
   users: [],
-  loading: false,
+  repos: [],
   user: {},
+  loading: false,
   searchUsers: () => {},
   clearUsers: () => {},
-  getUserAndRepos: () => {},
+  fetchUserAndRepos: () => {},
 }
 
 const GithubContext = createContext(initialState)
@@ -20,30 +28,30 @@ export const GithubProvider = ({ children }) => {
   const [state, dispatch] = useReducer(githubReducer, initialState)
 
   const searchUsers = async (text) => {
-    dispatch({ type: 'SEARCH_USERS_REQUEST' })
+    dispatch({ type: FETCH_SEARCH_USERS })
     const data = await githubApi(`/search/users?q=${text}`)
-    dispatch({ type: 'SEARCH_USERS', payload: data.items })
+    dispatch({ type: SET_SEARCH_USERS, payload: data.items })
   }
 
-  const getUserAndRepos = async (login) => {
-    dispatch({ type: 'GET_USER_REQUEST' })
+  const fetchUserAndRepos = async (login) => {
+    dispatch({ type: FETCH_USER_REPOS })
 
-    const [userData, repos] = await Promise.all([
+    const [user, repos] = await Promise.all([
       githubApi(`/users/${login}`),
       githubApi(`/users/${login}/repos`),
     ])
 
-    dispatch({ type: 'GET_USER', payload: { userData, repos } })
+    dispatch({ type: SET_USER_REPOS, payload: { user, repos } })
   }
 
-  const clearUsers = () => dispatch({ type: 'CLEAR_USERS' })
+  const clearUsers = () => dispatch({ type: CLEAR_SEARCH_USERS })
 
   const value = {
     users: state.users,
     user: state.user,
     loading: state.loading,
     searchUsers,
-    getUserAndRepos,
+    fetchUserAndRepos,
     clearUsers,
   }
 

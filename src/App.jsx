@@ -13,15 +13,13 @@ const App = () => {
   return (
     <Fragment>
       <Navbar />
-      <main style={{ minHeight: '80vh' }} className="container mb-3">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/user/:login" element={<UserPage />} />
-          <Route path="/notfound" element={<NotFoundPage />} />
-          <Route path="/*" element={<NotFoundPage />} />
-        </Routes>
-      </main>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/user/:login" element={<UserPage />} />
+        <Route path="/notfound" element={<NotFoundPage />} />
+        <Route path="/*" element={<NotFoundPage />} />
+      </Routes>
       <Footer />
     </Fragment>
   )

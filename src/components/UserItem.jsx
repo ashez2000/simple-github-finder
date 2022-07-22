@@ -2,26 +2,17 @@ import { Link } from 'react-router-dom'
 
 const UserItem = ({ user }) => {
   return (
-    <div className="card mb-3">
-      <div className="row g-0">
-        <div className="col-md-4" style={{ maxWidth: '5rem' }}>
-          <img
-            src={user.avatar_url}
-            className="img-fluid rounded-start"
-            alt={`${user.login}'s avatar`}
-            width="100%"
-          />
-        </div>
-        <div className="col-md-8">
-          <div className="card-body">
-            <h5 className="card-title">{user.login}</h5>
-            <p className="card-text">
-              <Link to={`/user/${user.login}`}>
-                <small className="text-muted">Visit Profile</small>
-              </Link>
-            </p>
-          </div>
-        </div>
+    <div className="flex p-5 max-w-xs bg-gray-200 border-2 border-blue-200 rounded-md">
+      <img
+        className="w-20 h-20 rounded-full mr-3"
+        src={user.avatar_url}
+        alt="user's avatar image"
+      />
+      <div className="flex flex-col justify-center">
+        <h2 className="font-bold">{user.login}</h2>
+        <Link className="text-blue-500" to={`/user/${user.login}`}>
+          Show Profile
+        </Link>
       </div>
     </div>
   )

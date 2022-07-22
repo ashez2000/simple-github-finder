@@ -3,13 +3,14 @@ import { useParams } from 'react-router-dom'
 
 import { useGithub } from '../context/github/GithubContext'
 import Spinner from '../components/Spinner'
+import UserInfo from '../components/UserInfo'
 
 const UserPage = () => {
-  const { getUserAndRepos, user, loading } = useGithub()
+  const { fetchUserAndRepos, user, loading } = useGithub()
   const { login } = useParams()
 
   useEffect(() => {
-    getUserAndRepos(login)
+    fetchUserAndRepos(login)
   }, [])
 
   if (loading) {
@@ -19,7 +20,7 @@ const UserPage = () => {
   return (
     <div className="max-w-6xl mx-auto px-3 mb-3">
       <h1>UserPage</h1>
-      <pre>{JSON.stringify(user, null, 2)}</pre>
+      <UserInfo user={user} />
     </div>
   )
 }

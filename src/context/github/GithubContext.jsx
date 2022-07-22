@@ -1,5 +1,6 @@
 import { createContext, useContext, useReducer } from 'react'
 
+import githubApi from '../../utils/api'
 import githubReducer from './githubReducer'
 
 const initialState = {
@@ -19,27 +20,13 @@ export const GithubProvider = ({ children }) => {
 
   const searchUsers = async (text) => {
     dispatch({ type: 'SEARCH_USERS_REQUEST' })
-
-    const res = await fetch(`https://api.github.com/search/users?q=${text}`, {
-      headers: {
-        Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`,
-      },
-    })
-
-    const data = await res.json()
+    const data = await githubApi(`/search/users?q=${text}`)
     dispatch({ type: 'SEARCH_USERS', payload: data.items })
   }
 
   const getUser = async (login) => {
     dispatch({ type: 'GET_USER_REQUEST' })
-
-    const res = await fetch(`https://api.github.com/users/${login}`, {
-      headers: {
-        Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`,
-      },
-    })
-
-    const data = await res.json()
+    const data = await githubApi(`/users/${login}`)
     dispatch({ type: 'GET_USER', payload: data })
   }
 

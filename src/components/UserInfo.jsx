@@ -9,7 +9,7 @@ const UserInfo = ({ user }) => {
         <p className="mb-4 text-center">{user.bio}</p>
         <div>
           <a
-            className="px-5 py-2 bg-blue-400 rounded-md font-bold"
+            className="px-5 py-2 bg-primary-400 rounded-md font-bold"
             href={user.html_url}
             target="_blank"
             rel="noreferrer"

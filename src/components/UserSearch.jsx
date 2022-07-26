@@ -16,7 +16,7 @@ const UserSearch = () => {
     <Fragment>
       <form className="mb-3 flex space-x-3" onSubmit={handleSubmit}>
         <input
-          className="w-60 px-5 py-2 rounded-md bg-slate-200 focus:outline-none"
+          className="w-60 px-5 py-2 rounded-md bg-light-300 dark:bg-dark-300 focus:outline-none"
           type="text"
           placeholder="Search Users"
           value={text}
@@ -24,7 +24,7 @@ const UserSearch = () => {
           required
         />
         <input
-          className="px-5 py-2 bg-blue-400 rounded-md font-bold cursor-pointer"
+          className="px-5 py-2 bg-primary-300 rounded-md font-bold cursor-pointer"
           type="submit"
           value="Search"
         />
@@ -32,7 +32,7 @@ const UserSearch = () => {
       {users.length > 0 && (
         <div className="mb-3">
           <button
-            className="px-5 py-2 bg-slate-200 rounded-md font-bold cursor-pointer"
+            className="px-5 py-2 bg-slate-200 dark:bg-dark-300 rounded-md font-bold cursor-pointer"
             onClick={clearUsers}
           >
             Clear

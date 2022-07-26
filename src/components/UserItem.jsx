@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 const UserItem = ({ user }) => {
   return (
-    <div className="flex p-5 max-w-xs bg-gray-200 border-2 border-blue-200 rounded-md">
+    <div className="flex p-5 max-w-xs bg-light-200 dark:bg-dark-300 rounded-md">
       <img
         className="w-20 h-20 rounded-full mr-3"
         src={user.avatar_url}
@@ -10,7 +10,7 @@ const UserItem = ({ user }) => {
       />
       <div className="flex flex-col justify-center">
         <h2 className="font-bold">{user.login}</h2>
-        <Link className="text-blue-500" to={`/user/${user.login}`}>
+        <Link className="text-primary-300" to={`/user/${user.login}`}>
           Show Profile
         </Link>
       </div>
